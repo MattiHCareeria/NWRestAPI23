@@ -16,8 +16,62 @@ namespace NWRestAPI.Controllers
         //Hakee kaikki asiakkaat
         public ActionResult GetAllCustomers()
         {
-            var asiakkaat = db.Customers.ToList();
-            return Ok(asiakkaat);
+            try 
+            {
+                var asiakkaat = db.Customers.ToList();
+                return Ok(asiakkaat); 
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.InnerException);
+            }
+
+
+        
+        }
+
+        [HttpGet("{id}")]
+        
+        //Hakee yhen asiakkaan pääavaimella
+        public ActionResult GetCustomerById(string id)
+        {
+            try
+            {
+                var asiakas = db.Customers.Find(id);
+                if (asiakas != null)
+                {
+                    return Ok(asiakas);
+                }
+                else
+                {
+                    //return BadRequest("Asiakasta ei löydy idllä " + id + ".");
+                    return BadRequest($"Asiakasta ei löydy idllä {id}.");
+                }
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.InnerException);
+            }
+            
+            
+        }
+
+        //Uuden lisääminen
+
+        [HttpPost]
+
+        public ActionResult AddNew([FromBody] Customer cust)
+        {
+            try
+            {
+                db.Customers.Add(cust);
+                db.SaveChanges();
+                return Ok($"Added new customer {cust.CompanyName} from {cust.City}.");
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.InnerException);
+            }
         }
     }
 }
