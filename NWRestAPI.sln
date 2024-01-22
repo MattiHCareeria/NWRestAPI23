@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NWRestAPI", "NWRestAPI\NWRestAPI.csproj", "{CBCA43A1-31CE-41D6-BD4A-A92F98D41E37}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBCA43A1-31CE-41D6-BD4A-A92F98D41E37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBCA43A1-31CE-41D6-BD4A-A92F98D41E37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBCA43A1-31CE-41D6-BD4A-A92F98D41E37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBCA43A1-31CE-41D6-BD4A-A92F98D41E37}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CAACFA3C-BC83-4A03-8199-69521690EBA1}
+	EndGlobalSection
+EndGlobal
