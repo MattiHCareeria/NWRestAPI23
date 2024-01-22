@@ -16,10 +16,10 @@ namespace NWRestAPI.Controllers
         //Hakee kaikki asiakkaat
         public ActionResult GetAllCustomers()
         {
-            try 
+            try
             {
                 var asiakkaat = db.Customers.ToList();
-                return Ok(asiakkaat); 
+                return Ok(asiakkaat);
             }
             catch (Exception ex)
             {
@@ -27,11 +27,11 @@ namespace NWRestAPI.Controllers
             }
 
 
-        
+
         }
 
         [HttpGet("{id}")]
-        
+
         //Hakee yhen asiakkaan pääavaimella
         public ActionResult GetCustomerById(string id)
         {
@@ -48,12 +48,12 @@ namespace NWRestAPI.Controllers
                     return BadRequest($"Asiakasta ei löydy idllä {id}.");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.InnerException);
             }
-            
-            
+
+
         }
 
         //Uuden lisääminen
@@ -68,10 +68,39 @@ namespace NWRestAPI.Controllers
                 db.SaveChanges();
                 return Ok($"Added new customer {cust.CompanyName} from {cust.City}.");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.InnerException);
             }
+        }
+
+        [HttpDelete("{id}")]
+
+        //Asiakkaan poistaminen
+
+        public ActionResult DeleteCustomerById(string id)
+        {
+            try
+            {
+                var asiakas = db.Customers.Find(id);
+
+                if (asiakas != null)
+                {
+                    db.Customers.Remove(asiakas);
+                    db.SaveChanges();
+                    return Ok($"Customer {asiakas.CompanyName} removed");
+                }
+                else
+                {
+                    return NotFound("Asiakas idllä" + id + "ei löytynyt");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.InnerException);
+            }
+            
+
         }
     }
 }
