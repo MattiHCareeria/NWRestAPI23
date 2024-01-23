@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using NWRestAPI.Models;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 // Dependency injektiolla välitetty tietokantatieto kontrollereille
 
