@@ -10,7 +10,18 @@ namespace NWRestAPI.Controllers
     public class CustomersController : ControllerBase
     {
         //Alustetaan tietokantayhteys
-        NorthwindContext db = new NorthwindContext();
+
+        //perinteinen yhteys
+        //NorthwindContext db = new NorthwindContext();
+
+        //Dependency injektio
+        private NorthwindContext db;
+
+        public CustomersController(NorthwindContext dbparametri)
+        {
+            db = dbparametri;
+        }
+
 
         [HttpGet]
 
