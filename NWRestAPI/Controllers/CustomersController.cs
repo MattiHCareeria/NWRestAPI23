@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client;
 using NWRestAPI.Models;
 
 namespace NWRestAPI.Controllers
@@ -102,5 +103,59 @@ namespace NWRestAPI.Controllers
             
 
         }
+        //Asiakkaan muokkaaminen
+        [HttpPut("{id}")]
+
+        public ActionResult EditCustomer(string id, [FromBody] Customer customer)
+        {
+            try
+            {
+                var asiakas = db.Customers.Find(id);
+
+                if (asiakas != null)
+                {
+                    asiakas.CompanyName = customer.CompanyName;
+                    asiakas.Address = customer.Address;
+                    asiakas.City = customer.City;
+                    asiakas.Country = customer.Country;
+                    asiakas.ContactName = customer.ContactName;
+                    asiakas.ContactTitle = customer.ContactTitle;
+                    asiakas.Region = customer.Region;
+                    asiakas.PostalCode = customer.PostalCode;
+                    asiakas.Phone = customer.Phone;
+                    asiakas.Fax = customer.Fax;
+
+                    db.SaveChanges();
+                    return Ok("Muokattu asiakasta " + asiakas.CompanyName);
+                }
+
+                return NotFound("Asiakasta ei löytynyt idllä " + id);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.InnerException);
+            }
+
+
+
+            
+        }
+
+        [HttpGet("companyname/{cname}")]
+
+        public ActionResult GetByName(string cname)
+        {
+            try
+            {
+                var cust = db.Customers.Where(c => c.CompanyName.Contains(cname));
+
+                return Ok(cust);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.InnerException);
+            }
+        }
+
     }
 }
