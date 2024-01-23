@@ -19,7 +19,7 @@ namespace NWRestAPI.Controllers
 
         [HttpGet("{id}")]
 
-        //Hakee yhen asiakkaan pääavaimella
+        //Hakee yhen työntekijän pääavaimella
         public ActionResult GetEmployeeById(int id)
         {
             try
@@ -40,6 +40,8 @@ namespace NWRestAPI.Controllers
             }
         }
 
+
+        //Hakee kaikki työntekijät
         [HttpGet]
         public ActionResult GetAllEployees()
         {
@@ -54,6 +56,8 @@ namespace NWRestAPI.Controllers
             }
         }
 
+
+        //Hakee työntekijät nimenosalla
         [HttpGet("employeename/{ename}")]
 
         public ActionResult GetByName(string ename)
@@ -70,6 +74,8 @@ namespace NWRestAPI.Controllers
             }
         }
 
+
+        //Lisää työntekijän
         [HttpPost]
 
         public ActionResult AddNew([FromBody] Employee emp)
@@ -86,6 +92,8 @@ namespace NWRestAPI.Controllers
             }
         }
 
+
+        //Muokkaa työntekijää
         [HttpPut("{id}")]
 
         public ActionResult EditEmployee(int id, [FromBody] Employee employee)
@@ -131,9 +139,10 @@ namespace NWRestAPI.Controllers
 
 
         }
-        [HttpDelete("{id}")]
 
-        //Asiakkaan poistaminen
+        //Työntekijän poistaminen
+
+        [HttpDelete("{id}")]
 
         public ActionResult DeleteEmployeeById(int id)
         {

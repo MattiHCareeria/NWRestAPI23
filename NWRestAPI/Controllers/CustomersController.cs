@@ -44,7 +44,7 @@ namespace NWRestAPI.Controllers
 
         [HttpGet("{id}")]
 
-        //Hakee yhen asiakkaan pääavaimella
+        //Hakee yhden asiakkaan pääavaimella
         public ActionResult GetCustomerById(string id)
         {
             try
@@ -68,7 +68,7 @@ namespace NWRestAPI.Controllers
 
         }
 
-        //Uuden lisääminen
+        //Uuden asiakkaan lisääminen
 
         [HttpPost]
 
@@ -86,9 +86,9 @@ namespace NWRestAPI.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
 
         //Asiakkaan poistaminen
+        [HttpDelete("{id}")]
 
         public ActionResult DeleteCustomerById(string id)
         {
@@ -114,6 +114,8 @@ namespace NWRestAPI.Controllers
             
 
         }
+
+
         //Asiakkaan muokkaaminen
         [HttpPut("{id}")]
 
@@ -152,6 +154,7 @@ namespace NWRestAPI.Controllers
             
         }
 
+        //Asiakkaan hakeminen nimen osalla
         [HttpGet("companyname/{cname}")]
 
         public ActionResult GetByName(string cname)
